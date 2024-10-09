@@ -24,6 +24,7 @@ form{
     font-size: 14px;
     max-height: 100%;
     box-sizing: border-box;
+    border-radius: 5px;
 }
 
 .btn{
@@ -35,13 +36,14 @@ form{
 form button{
     display: block;
     align-items: center;
-    background-color: #78ffe9;
+    background-color: #6adfcc;
     border: none;
     border-radius: 5px;
     height: 25px;
     width: 100px;
     margin-bottom: 3px;
     font-weight: bold;
+    
 }
 
 .input{
@@ -94,6 +96,7 @@ textarea{
     background-color: #eeeeee;
     border-radius: 5px;
     box-sizing: border-box;
+    outline: none;
 }
 
 
