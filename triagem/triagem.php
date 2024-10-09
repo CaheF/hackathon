@@ -26,7 +26,7 @@
         if ($resultado->num_rows > 0) {
             // Itera sobre os resultados
             while ($row = $resultado->fetch_assoc()) {
-                echo "<p>ID: " . $row["idCadastro"] . "</p>" . "<br>";
+                echo "Número de cadastro: " . $row["idCadastro"] . "<br>";
                 echo "Nome: " . $row["nome"] . "<br>";
                 echo "Data de Nascimento: " . $row["dataNasc"] . "<br>";
                 echo "Bairro: " . $row["bairro"] . "<br>";
