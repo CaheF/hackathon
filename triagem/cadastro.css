@@ -16,6 +16,8 @@ main{
 }
 
 form{
+    margin: 0;
+    padding: 0;
     display: flex;
     background-color: white;
     width: 520px;
@@ -23,6 +25,7 @@ form{
     flex-direction: column;
     justify-content: center;
     font-size: 14px;
+    height: 550px;
     max-height: 100%;
     box-sizing: border-box;
     border-radius: 5px;
@@ -32,19 +35,18 @@ form{
     display: flex;
     align-items: center; 
     justify-content: center;
+    
 }
 
 form button{
     display: block;
-    align-items: center;
     background-color: #6adfcc;
     border: none;
     border-radius: 5px;
     height: 25px;
     width: 100px;
-    margin-bottom: 3px;
     font-weight: bold;
-    
+    transform: translate(0, 20%);
 }
 
 .input{
@@ -69,9 +71,10 @@ input{
     width: 120px;
 }
 
-.cad h2{
+form h2{
     text-align: center;
     color: #4ca496;
+    margin-bottom: 10px;
 }
 
 select{
