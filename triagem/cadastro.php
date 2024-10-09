@@ -26,7 +26,6 @@
 
     <main class="principal">
     <form action="back/cadastro.php" method="POST">
-        <div class="cad">
             <h2>Cadastro Paciente</h2>  
             <div class="input"><label>Nome Paciente</label><br>
             <input type="text" id="name" name="nome" placeholder="Insira nome do paciente">
@@ -74,8 +73,8 @@
                 
             </div>
             
-        </div>
-        <div class="btn"><button type="submit" id="btnCad" name="btnCad">Cadastrar</button></div>
+            <div class="btn"><button type="submit" id="btnCad" name="btnCad">Cadastrar</button></div>
+        
     </form>
     </main>
 </body>
