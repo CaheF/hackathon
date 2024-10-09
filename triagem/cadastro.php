@@ -20,7 +20,7 @@
             <ul>
                 <li><a href="cadastro.php" class="cadastrar">Cadastrar paciente</a></li>
                 <li><a href="atendimento.php">Realizar triagem</a></li>
-                <li><a href="triagem.php">Ver triagens </a></li>
+                <li><a href="triagem.php">Triagens realizadas </a></li>
                 <li><a href="relatorio.php">Relatório </a></li>
             </ul>
         </nav>
