@@ -1,8 +1,10 @@
-<?php 
+    <?php 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        require('triagem/back/conectar.php');
+        // Inclui o arquivo de conexão com o banco de dados
+        require('conectar.php');
 
+        // Coleta os dados do formulário
         $nome = $_POST['nome'];
         $dataNasc = $_POST['dataNasc'];
         $bairro = $_POST['bairro'];
@@ -12,31 +14,32 @@
         $documento = $_POST['documento'];
         $obs = $_POST['obs'];
 
+        // Verifica se o paciente já está cadastrado
         $sql = "SELECT idCadastro FROM cadastro WHERE documento = ? OR nome = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ss", $documento, $nome);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            echo "<p>Paciente já cadastrado.</p>";
+        } else {
+            // Inserir novo paciente
+            $sql = "INSERT INTO cadastro (nome, dataNasc, bairro, genero, trabalho, contato, documento, obs) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $documento, $nome);
+            $stmt->bind_param("ssssssss", $nome, $dataNasc, $bairro, $genero, $trabalho, $contato, $documento, $obs);
             $stmt->execute();
-            $stmt->store_result();
-
-            if ($stmt->num_rows > 0) {
-                echo "Paciente já cadastrado.";
+            
+            // Verifica se o cadastro foi realizado com sucesso
+            if ($stmt->affected_rows > 0) {
+                echo "<p>Cadastro realizado com sucesso!</p>";
             } else {
-                // Inserir novo cliente
-                $sql = "INSERT INTO cadastro (nome, dataNasc, bairro, genero, trabalho, contato, documento, obs) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->bind_param("ssssssss", $nome, $dataNasc, $bairro, $genero, $trabalho, $contato, $documento, $obs);
-                $stmt->execute();
-                
-                // Avisar que o cadastro foi realizado
-                if ($stmt->affected_rows > 0) {
-                    echo "Cadastro realizado com sucesso!";
-                } else {
-                    echo "Erro ao realizar o cadastro.";
-                }
-                $stmt->close();
+                echo "<p>Erro ao realizar o cadastro.</p>";
             }
+            $stmt->close();
+        }
 
-            // Fechar a conexão
-            $conn->close();
+        // Fechar a conexão com o banco de dados
+        $conn->close();
     }
-?>
+    ?>
