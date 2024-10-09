@@ -16,7 +16,7 @@ body {
 
 #container {
     display: flex;
-    height: calc(100vh); 
+    height: 100%; 
     width: auto;
 }
 
