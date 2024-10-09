@@ -64,7 +64,7 @@
 
             <div class="input">
                 <label>RG ou SUS</label>
-                <input type="number" id="documento" name="documento" placeholder="Insira o RG ou SUS do paciente">
+                <input type="text" id="documento" name="documento" placeholder="Insira o RG ou SUS do paciente">
             </div>
 
             <div class="input">
