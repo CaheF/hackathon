@@ -17,6 +17,7 @@ body {
 #container {
     display: flex;
     height: calc(100vh); 
+    width: auto;
 }
 
 /* Estilos do menu lateral */
