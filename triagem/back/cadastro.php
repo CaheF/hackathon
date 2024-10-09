@@ -3,7 +3,7 @@
 
         // Inclui o arquivo de conexão com o banco de dados
         require('conectar.php');
-
+        
         // Coleta os dados do formulário
         $nome = $_POST['nome'];
         $dataNasc = $_POST['dataNasc'];

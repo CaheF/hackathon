@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triagem</title>
     <link rel="stylesheet" href="cadastro.css">
+    <link rel="stylesheet" href="atendimento.css">
+    <style>
+        #menu ul li a.cadastrar{
+            background-color: #0cf000;
+            color: black;
+        }
+
+    </style>
 </head>
 <body>
-    <main>
+<div id="container">
+        <nav id="menu">
+            <ul>
+                <li><a href="cadastro.php" class="cadastrar">Cadastrar paciente</a></li>
+                <li><a href="atendimento.php">Realizar triagem</a></li>
+                <li><a href="triagens.php">Ver triagens</a></li>
+            </ul>
+        </nav>
+
+    <main class="principal">
     <form action="back/cadastro.php" method="POST">
         <div class="cad">
             <h2>Cadastro Paciente</h2>  

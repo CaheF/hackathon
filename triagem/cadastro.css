@@ -12,6 +12,7 @@ main{
     justify-content: center;
     align-items: center;
     height: 100%;
+    width: 100%;
 }
 
 form{
@@ -94,6 +95,11 @@ textarea{
     background-color: #eeeeee;
     border-radius: 5px;
     box-sizing: border-box;
+}
+
+.principal {
+    display: flex;
+    justify-content: center;
 }
 
 
