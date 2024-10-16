@@ -68,11 +68,10 @@
                     echo "</div>";
 
                     // Botão de triagem
-                    echo "<form action='relTriagem.php' method='POST'>";
+                    echo "<form action='relTriagem.php' method='GET'>";
                     echo "<input type='hidden' name='idPaciente' value='" . $row["idCadastro"] . "'>";
                     echo "<button type='submit' class='triage-btn'>Realizar Triagem</button>";
                     echo "</form>";
-                    echo "</li>";
                 }
                 echo "</ul>";
             } else {

@@ -1,7 +1,13 @@
 <?php
-$servername = "localhost:3308";
+//$servername = "localhost:3308";
+//$username = "root";
+//$password = "etec2024";
+//$dbname = "triagem";
+
+// casa diggas
+$servername = "localhost:3306";
 $username = "root";
-$password = "etec2024";
+$password = "etec2023";
 $dbname = "triagem";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
