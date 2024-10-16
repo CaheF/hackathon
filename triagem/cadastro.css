@@ -43,10 +43,10 @@ form button{
     background-color: #6adfcc;
     border: none;
     border-radius: 5px;
-    height: 25px;
+    height: 30px;
     width: 100px;
     font-weight: bold;
-    transform: translate(0, 20%);
+    transform: translate(0, 10%);
     cursor: pointer;
 }
 
@@ -109,5 +109,18 @@ textarea{
     justify-content: center;
 }
 
+a{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 13px;
+}
+
+img{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    
+}
 
 
