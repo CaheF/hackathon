@@ -1,0 +1,16 @@
+#main-content {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente se necessário */
+    min-height: 100vh; /* Garante que o conteúdo fique centralizado na altura da tela */
+}
+
+.relatorio {
+    text-align: center; /* Centraliza o texto dentro da div */
+    border: 1px solid #ccc; /* Opcional: adicione uma borda para destaque */
+    padding: 20px; /* Espaço interno */
+    border-radius: 5px; /* Cantos arredondados (opcional) */
+    background-color: #f9f9f9; /* Cor de fundo (opcional) */
+    width: 80%; /* Ajuste a largura conforme necessário */
+    max-width: 600px; /* Limita a largura máxima */
+}

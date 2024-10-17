@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saúde</title>
     <link rel="stylesheet" href="atendimento.css">
+    <link rel="stylesheet" href="relatorio.css">
 </head>
 <body>
 
@@ -21,6 +22,8 @@
 
         <section id="main-content">
             <?php
+
+            echo "<div class='relatorio'>";
                  
                  include_once('back/conectar.php');
                  // Consulta SQL para calcular a média de idade
@@ -33,7 +36,7 @@
                 if ($result) {
                 // Pega o resultado da consulta
                 $row = $result->fetch_assoc();
-    
+                
                 // Exibe a média de idades
                 if ($row['media_idade'] !== null) {
                     echo "A média de idades é: " . number_format($row['media_idade'], 2) . " anos.";
@@ -54,7 +57,6 @@
    
         $row = $result->fetch_assoc();
     
-     
         echo "<br>" . "O gênero mais cadastrado é: " . $row['genero'] . " com " . $row['quantidade'] . " cadastros.";
         }else {
             echo "Nenhum dado encontrado.";
@@ -112,7 +114,9 @@ if ($result) {
 } else {
     echo "Erro ao executar a consulta: " . $conn->error;
 }
+    echo "</div>";
             ?>
+
         </section>
     </div>
 </body>
