@@ -41,8 +41,8 @@ if (isset($_GET['idPaciente'])) {
                 <a href="./relatorio.php"><img src="image/aaa.png" alt="Logo do site"></a>
                 <li><a href="cadastro.php">Cadastrar paciente</a></li>
                 <li><a href="atendimento.php" class="active">Realizar triagem</a></li>
-                <li><a href="triagem.php">Triagens realizadas </a></li>
-                <li><a href="relatorio.php">Relatório </a></li>
+                <li><a href="triagem.php">Triagens realizadas</a></li>
+                <li><a href="relatorio.php">Relatório</a></li>
             </ul>
         </nav>
     <main class="principal">
@@ -54,50 +54,50 @@ if (isset($_GET['idPaciente'])) {
         </div>
 
         <div class="input"><label class="lbl">Altura</label>
-            <input type="text" id="altura" name="altura" placeholder="Insira a altura">
+            <input type="text" id="altura" name="altura" placeholder="Insira a altura" required>
         </div>
 
         <div class="input"><label class="lbl">Peso</label>
-            <input type="text" id="peso" name="peso" placeholder="Insira o peso">
+            <input type="text" id="peso" name="peso" placeholder="Insira o peso" required>
         </div>
 
         <div class="input">
-        <label class="lbl">Tipo Sangue<br></label>
-        <select id="tipoSangue" name="tipoSangue">
-            <option value="">Selecione...</option>
-            <option value="A+">A+</option>
-            <option value="B+">B+</option>
-            <option value="A-">A-</option>
-            <option value="B-">B-</option>
-            <option value="AB+">AB+</option>
-            <option value="O+">O+</option>
-            <option value="O-">O-</option>
-        </select>
+            <label class="lbl">Tipo Sangue<br></label>
+            <select id="tipoSangue" name="tipoSangue" required>
+                <option value="">Selecione...</option>
+                <option value="A+">A+</option>
+                <option value="B+">B+</option>
+                <option value="A-">A-</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+            </select>
         </div>
 
         <div class="input">
-            <label class="lbl">Data</label>
-            <input type="date" id="data" name="data">
+            <label class="lbl">Dia realizado</label>
+            <input type="date" id="data" name="data" required>
         </div>
 
         <div class="input">
             <label class="lbl">Pressão</label>
-            <input type="text" id="pressao" name="pressao" placeholder="Insira a pressão">
+            <input type="text" id="pressao" name="pressao" placeholder="Insira a pressão" required>
         </div>
 
         <div class="input">
             <label class="lbl">Lugar Realizado</label>
-            <input type="text" id="lugar" name="lugar" placeholder="Insira o local de triagem">
+            <input type="text" id="lugar" name="lugar" placeholder="Insira o local de triagem" required>
         </div>
         
         <div class="input">
             <label class="lbl">Atendente</label>
-            <input type="text" id="atendente" name="atendente" placeholder="Insira o nome do atendente">
+            <input type="text" id="atendente" name="atendente" placeholder="Insira o nome do atendente" required>
         </div>
 
         <div class="input">
-                <label class="lbl">Campo de observação</label>
-                <textarea id="obs" name="obs" placeholder="Insira as observações do paciente"></textarea>
+            <label class="lbl">Campo de observação</label>
+            <textarea id="obs" name="obs" placeholder="Insira as observações do paciente"></textarea>
         </div>
 
         <div class="btn">
@@ -106,47 +106,52 @@ if (isset($_GET['idPaciente'])) {
 
         <div class="msg">
         <?php 
-    if ($_SERVER["REQUEST_METHOD"] == "POST"){
-
-        // Inclui o arquivo de conexão com o banco de dados
-        require('back/conectar.php');
-        
-        // Coleta os dados do formulário
-        $idCadastro = $idPaciente;
-        $altura = $_POST['altura'];
-        $peso = $_POST['peso'];
-        $tipoSangue = $_POST['tipoSangue'];
-        $pressao = $_POST['pressao'];
-        $data = $_POST['data'];
-        $lugar = $_POST['lugar'];
-        $atendente = $_POST['atendente'];
-        $obs = $_POST['obs'];
-
-            // Inserir novo paciente
-            $sql = "INSERT INTO atendimento (idCadastro, altura, peso, tipoSangue, pressao, dia, lugar, atendente, obsAtendente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("issssssss", $idCadastro, $altura, $peso, $tipoSangue, $pressao, $data, $lugar, $atendente, $obs);
-            $stmt->execute();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // Inclui o arquivo de conexão com o banco de dados
+            require('back/conectar.php');
             
-            // Verifica se o cadastro foi realizado com sucesso
-            if ($stmt->affected_rows > 0) {
-                echo "<div class='cad'>";
-                echo "<p>Cadastro realizado com sucesso!</p>";
-                echo "</div>";
-            } else {
-                echo "<p>Erro ao realizar o cadastro.</p>";
-            }
-            $stmt->close();
+            // Coleta os dados do formulário
+            $idCadastro = $idPaciente;
+            $altura = $_POST['altura'];
+            $peso = $_POST['peso'];
+            $tipoSangue = $_POST['tipoSangue'];
+            $pressao = $_POST['pressao'];
+            $data = $_POST['data'];
+            $lugar = $_POST['lugar'];
+            $atendente = $_POST['atendente'];
+            $obs = $_POST['obs'];
 
-        // Fechar a conexão com o banco de dados
-        $conn->close();
-    }
-    ?>
+            // Validação dos campos obrigatórios
+            if (empty($altura) || empty($peso) || empty($tipoSangue) || empty($pressao) || empty($data) || empty($lugar) || empty($atendente)) {
+                echo "<div class='error'>Todos os campos são obrigatórios, exceto o campo de observação.</div>";
+            } else {
+                // Inserir nova triagem
+                $sql = "INSERT INTO atendimento (idCadastro, altura, peso, tipoSangue, pressao, dia, lugar, atendente, obsAtendente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("issssssss", $idCadastro, $altura, $peso, $tipoSangue, $pressao, $data, $lugar, $atendente, $obs);
+                $stmt->execute();
+                
+                // Verifica se o cadastro foi realizado com sucesso
+                if ($stmt->affected_rows > 0) {
+                    echo "<div class='msg'>";
+                    echo "<p>Cadastro realizado com sucesso!</p>";
+                    echo "</div>";
+                } else {
+                    echo "<div class='error'>";
+                    echo "<p>Erro ao realizar o cadastro.</p>";
+                    echo "</div>";
+                }
+                $stmt->close();
+            }
+
+            // Fechar a conexão com o banco de dados
+            $conn->close();
+        }
+        ?>
         </div>
     </form>
 </main>
 </div>
-
 
 </body>
 </html>

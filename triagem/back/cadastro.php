@@ -32,7 +32,9 @@
             
             // Verifica se o cadastro foi realizado com sucesso
             if ($stmt->affected_rows > 0) {
+                echo "<div class='cad'>";
                 echo "<p>Cadastro realizado com sucesso!</p>";
+                echo "</div>";
             } else {
                 echo "<p>Erro ao realizar o cadastro.</p>";
             }
