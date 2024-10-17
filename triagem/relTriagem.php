@@ -32,68 +32,79 @@ if (isset($_GET['idPaciente'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Triagem do Paciente</title>
     <link rel="stylesheet" href="atendimento.css">
+    <link rel="stylesheet" href="relTriagem.css">
 </head>
 <body>
 <div id="container">
-    <h2>Triagem do Paciente</h2>
+        <nav id="menu">
+            <ul>
+                <a href="./relatorio.php"><img src="image/aaa.png" alt="Logo do site"></a>
+                <li><a href="cadastro.php">Cadastrar paciente</a></li>
+                <li><a href="atendimento.php" class="active">Realizar triagem</a></li>
+                <li><a href="triagem.php">Triagens realizadas </a></li>
+                <li><a href="relatorio.php">Relatório </a></li>
+            </ul>
+        </nav>
+    <main class="principal">
     <form method="POST">
-        <input type="hidden" name="idPaciente" value="<?php echo $idPaciente; ?>">
-
-        <div>
-            <label>Nome:</label>
-            <input type="text" name="nome" value="<?php echo $paciente['nome']; ?>" readonly>
+        
+        <div class="input" id="alinhamentoPaciente">
+            <label id="lblNome">Nome:</label>
+            <label id="nomePaciente"><?php echo $paciente['nome']; ?></label>
         </div>
 
-        <div class="input"><label>Altura</label><br>
+        <div class="input"><label class="lbl">Altura</label>
             <input type="text" id="altura" name="altura" placeholder="Insira a altura">
         </div>
 
-        <div class="input"><label>Peso</label><br>
+        <div class="input"><label class="lbl">Peso</label>
             <input type="text" id="peso" name="peso" placeholder="Insira o peso">
         </div>
 
-            <div class="input"><label class="lbl">Tipo Sangue</label> 
-                <label class="lbl">Data</label><br>
+        <div class="input">
+        <label class="lbl">Tipo Sangue<br></label>
+        <select id="tipoSangue" name="tipoSangue">
+            <option value="">Selecione...</option>
+            <option value="A+">A+</option>
+            <option value="B+">B+</option>
+            <option value="A-">A-</option>
+            <option value="B-">B-</option>
+            <option value="AB+">AB+</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+        </select>
+        </div>
 
-                <select id="tipoSangue" name="tipoSangue">
-                    <option value="">Selecione...</option>
-                    <option value="A+">A+</option>
-                    <option value="B+">B+</option>
-                    <option value="A-">A-</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                </select>
-                
-                <input type=date id="data" name="data">
-            </div>
+        <div class="input">
+            <label class="lbl">Data</label>
+            <input type="date" id="data" name="data">
+        </div>
 
-        <div>
-            <label>Pressão</label><br>
+        <div class="input">
+            <label class="lbl">Pressão</label>
             <input type="text" id="pressao" name="pressao" placeholder="Insira a pressão">
         </div>
 
-        <div>
-            <label>Lugar Realizado</label><br>
+        <div class="input">
+            <label class="lbl">Lugar Realizado</label>
             <input type="text" id="lugar" name="lugar" placeholder="Insira o local de triagem">
         </div>
         
-        <div>
-            <label>Atendente</label><br>
+        <div class="input">
+            <label class="lbl">Atendente</label>
             <input type="text" id="atendente" name="atendente" placeholder="Insira o nome do atendente">
         </div>
 
         <div class="input">
-                <label>Campo de observação</label><br>
+                <label class="lbl">Campo de observação</label>
                 <textarea id="obs" name="obs" placeholder="Insira as observações do paciente"></textarea>
-  
         </div>
 
-        <div>
+        <div class="btn">
             <button type="submit">Salvar Triagem</button>
         </div>
     </form>
+</main>
 </div>
 
 <?php 
@@ -121,7 +132,9 @@ if (isset($_GET['idPaciente'])) {
             
             // Verifica se o cadastro foi realizado com sucesso
             if ($stmt->affected_rows > 0) {
+                echo "<div class='cad'>";
                 echo "<p>Cadastro realizado com sucesso!</p>";
+                echo "</div>";
             } else {
                 echo "<p>Erro ao realizar o cadastro.</p>";
             }

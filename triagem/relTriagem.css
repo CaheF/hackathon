@@ -25,10 +25,10 @@ form{
     flex-direction: column;
     justify-content: center;
     font-size: 14px;
-    height: 550px;
-    max-height: 100%;
+    height: 100%;
     box-sizing: border-box;
     border-radius: 5px;
+    margin-top: 10px;
 }
 
 .btn{
@@ -46,7 +46,6 @@ form button{
     height: 30px;
     width: 100px;
     font-weight: bold;
-    transform: translate(0, 10%);
     cursor: pointer;
 }
 
@@ -73,8 +72,21 @@ input{
     margin-bottom: 10px;
 }
 
+#alinhamentoPaciente{
+    display: flex;
+}
+
+#nomePaciente{
+    display: flex;
+    font-weight: bold;
+    margin-bottom: 10px;
+    width: auto;
+}
+
+
 #data{
     width: 120px;
+    display: block;
 }
 
 form h2{
@@ -97,6 +109,10 @@ select{
     margin-right: 60px;
 }
 
+#lblNome{
+    width: 10%;
+}
+
 textarea{
     height: 120px;
     width: 100%;
@@ -107,11 +123,6 @@ textarea{
     border-radius: 5px;
     box-sizing: border-box;
     outline: none;
-}
-
-.principal {
-    display: flex;
-    justify-content: center;
 }
 
 a{
@@ -128,4 +139,18 @@ img{
     
 }
 
+.cad{
+    display: flex;
+    margin-top:15px ;
+}
+
+p{
+    display: flex;
+    justify-content: center;
+    background-color: #4ca496;
+    border: #6adfcc;
+    border-radius: 10px;
+    transform: translate(190%, 0);
+    width: 25%;
+}
 

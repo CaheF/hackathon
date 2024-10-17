@@ -6,21 +6,14 @@
     <title>Atendimento</title>
 
     <link rel="stylesheet" href="atendimento.css">
-
-    <style>
-        #menu ul li a.atendimento {
-            background-color: #0cf000;
-            color: black;
-        }
-    </style>
 </head>
 <body>
 <div id="container">
         <nav id="menu">
             <ul>
-                <a href="./relatorio.php"><img src="image/aa.png" alt="Logo do site"></a>
-                <li><a href="cadastro.php" class="cadastrar">Cadastrar paciente</a></li>
-                <li><a href="atendimento.php">Realizar triagem</a></li>
+                <a href="./relatorio.php"><img src="image/aaa.png" alt="Logo do site"></a>
+                <li><a href="cadastro.php">Cadastrar paciente</a></li>
+                <li><a href="atendimento.php" class="active">Realizar triagem</a></li>
                 <li><a href="triagem.php">Triagens realizadas </a></li>
                 <li><a href="relatorio.php">Relatório </a></li>
             </ul>
