@@ -1,62 +1,76 @@
+/* Estilo para o corpo da página */
+body {
+    font-family: Arial, sans-serif; /* Fonte agradável */
+    background-color: #f0f4f8; /* Fundo suave */
+    margin: 0; /* Remove margens do corpo */
+}
+
 /* Estilo para o conteúdo principal */
 #main-content {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
+    align-items: center; /* Alinha verticalmente */
     min-height: 100vh; /* Garante que ocupe toda a altura da tela */
-    background-color: #f0f4f8; /* Fundo suave */
-    padding: 0; /* Remove qualquer padding que atrapalhe a centralização */
-    margin: 0; /* Remove margens */
-    flex-grow: 1; /* Garante que o conteúdo ocupe todo o espaço possível */
+    padding: 20px; /* Adiciona padding ao redor do conteúdo */
+    flex-grow: 1;
 }
 
 /* Estilo para a seção de relatórios */
 .relatorio {
-    text-align: left;
-    border: 1px solid #ccc;
+    text-align: center; /* Centraliza o texto */
+    border: 1px solid #ccc; /* Borda leve */
     padding: 30px;
-    padding-top: 0;
-    border-radius: 10px;
-    background-color: #ffffff;
+    border-radius: 10px; /* Arredondamento dos cantos */
+    background-color: #ffffff; /* Fundo branco */
     width: 100%;
     max-width: 600px; /* Mantém a largura máxima */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Centraliza horizontalmente */
-    font-size: 18px;
-    line-height: 1.6;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Garante que o conteúdo seja centralizado verticalmente */
-    align-items: center; /* Centraliza o conteúdo interno horizontalmente */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin: 20px; /* Espaçamento ao redor da seção */
+    font-size: 18px; /* Tamanho da fonte */
+    line-height: 1.6; /* Espaçamento entre linhas */
+    color: #333; /* Cor do texto */
 }
 
-/* Separação visual de itens com borda */
-.relatorio .item {
-    border-bottom: 1px solid #e0e0e0;
-    padding: 10px 0;
+/* Títulos */
+h2 {
+    color: #4ca496; /* Cor verde suave */
+    margin-bottom: 20px; /* Espaço abaixo do título */
+    font-size: 24px; /* Tamanho do título */
+    border-bottom: 2px solid #4ca496; /* Linha abaixo do título */
+    padding-bottom: 10px; /* Espaço abaixo do texto do título */
 }
 
-.relatorio .item:last-child {
-    border-bottom: none;
+/* Estilo para os dados */
+.relatorio .dados {
+    background-color: #e7f9f1; /* Fundo suave para os dados */
+    border-radius: 8px; /* Arredondamento dos cantos */
+    padding: 15px; /* Espaçamento interno */
+    margin: 10px 0; /* Espaçamento vertical entre os dados */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
+    font-weight: bold; /* Negrito para os dados */
 }
 
-.relatorio p {
-    margin-bottom: 20px;
-    font-size: 16px;
-    color: #555;
+/* Estilo para as mensagens de erro e sucesso */
+.relatorio .success {
+    color: #4caf50; /* Verde para sucesso */
+    font-weight: bold; /* Negrito */
+    margin: 10px 0; /* Margem para separação */
+}
+
+.relatorio .error {
+    color: #f44336; /* Vermelho para erro */
+    font-weight: bold; /* Negrito */
+    margin: 10px 0; /* Margem para separação */
 }
 
 /* Responsividade para dispositivos menores */
 @media (max-width: 768px) {
     .relatorio {
-        width: 90%;
-        padding: 20px;
+        width: 90%; /* Largura reduzida em dispositivos pequenos */
+        padding: 20px; /* Padding reduzido */
     }
-}
 
-h2{
-    text-align: center;
-    color: #4ca496;
-    margin-bottom: 10px;
+    h2 {
+        font-size: 20px; /* Tamanho do título reduzido */
+    }
 }
