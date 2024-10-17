@@ -23,29 +23,36 @@
         <section id="main-content">
             <?php
 
-            echo "<div class='relatorio'>";
-                 
-                 include_once('back/conectar.php');
-                 // Consulta SQL para calcular a média de idade
-                 $sql = "SELECT AVG(TIMESTAMPDIFF(YEAR, dataNasc, CURDATE())) AS media_idade FROM cadastro WHERE dataNasc IS NOT NULL;";
+echo "<div class='relatorio'>";
 
-                // Executa a consulta
-                $result = $conn->query($sql);
+include_once('back/conectar.php');
 
-                // Verifica se houve resultado
-                if ($result) {
-                // Pega o resultado da consulta
-                $row = $result->fetch_assoc();
-                
-                // Exibe a média de idades
-                if ($row['media_idade'] !== null) {
-                    echo "A média de idades é: " . number_format($row['media_idade'], 2) . " anos.";
-                } else {
-                    echo "Nenhuma idade cadastrada.";
-                }
-                } else {
-                    echo "Erro ao executar a consulta: " . $conn->error;
-                }
+// Consulta SQL para agrupar e contar as idades, usando o nome correto da coluna 'dataNasc'
+$sql = "SELECT TIMESTAMPDIFF(YEAR, dataNasc, CURDATE()) AS idade, COUNT(*) AS total 
+        FROM cadastro 
+        WHERE dataNasc IS NOT NULL 
+        GROUP BY idade 
+        ORDER BY total DESC 
+        LIMIT 1;"; // Pega a idade mais comum
+
+// Executa a consulta
+$result = $conn->query($sql);
+
+// Verifica se houve resultado
+if ($result) {
+    // Pega o resultado da consulta
+    $row = $result->fetch_assoc();
+
+    // Exibe a idade mais comum e a quantidade de registros
+    if ($row['idade'] !== null) {
+        echo "A idade mais comum é: " . $row['idade'] . " anos, com " . $row['total'] . " registros.";
+    } else {
+        echo "Nenhuma idade cadastrada.";
+    }
+} else {
+    echo "Erro ao executar a consulta: " . $conn->error;
+}
+
                    
         $sql = "SELECT genero, COUNT(*) AS quantidade FROM cadastro GROUP BY genero ORDER BY quantidade DESC LIMIT 1";
 
