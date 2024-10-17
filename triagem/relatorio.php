@@ -28,29 +28,7 @@ echo "<div class='relatorio'>";
 
 include_once('back/conectar.php');
 
-// Consulta SQL para agrupar e contar as idades
-$sql = "SELECT TIMESTAMPDIFF(YEAR, dataNasc, CURDATE()) AS idade, COUNT(*) AS total 
-        FROM cadastro 
-        WHERE dataNasc IS NOT NULL 
-        GROUP BY idade 
-        ORDER BY total DESC 
-        LIMIT 1;"; // Pega a idade mais comum
-
-$result = $conn->query($sql);
-
-if ($result) {
-    $row = $result->fetch_assoc();
-    echo "<h2>Relatório Geral</h2>";
-
-    if ($row['idade'] !== null) {
-        echo "<div class='dados'>A idade mais comum é: <strong>" . $row['idade'] . "</strong> anos, com <strong>" . $row['total'] . "</strong> registros.</div>";
-    } else {
-        echo "<div class='error'>Nenhuma idade cadastrada.</div>";
-    }
-} else {
-    echo "<div class='error'>Erro ao executar a consulta: " . $conn->error . "</div>";
-}
-
+echo "<h2>Relatório Geral</h2>";
 // Gênero mais cadastrado
 $sql = "SELECT genero, COUNT(*) AS quantidade FROM cadastro GROUP BY genero ORDER BY quantidade DESC LIMIT 1";
 $result = $conn->query($sql);
