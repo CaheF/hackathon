@@ -54,12 +54,12 @@ if (isset($_GET['idPaciente'])) {
             <label id="nomePaciente"><?php echo $paciente['nome']; ?></label>
         </div>
 
-        <div class="input"><label class="lbl">Altura</label>
-            <input type="text" id="altura" name="altura" placeholder="Insira a altura" required>
+        <div class="input"><label class="lbl">Altura </label>
+            <input type="text" id="altura" name="altura" placeholder="Insira a altura em (cm)" required>
         </div>
 
         <div class="input"><label class="lbl">Peso</label>
-            <input type="text" id="peso" name="peso" placeholder="Insira o peso" required>
+            <input type="text" id="peso" name="peso" placeholder="Insira o peso em (kg)" required>
         </div>
 
         <div class="input">
