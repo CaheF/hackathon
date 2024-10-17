@@ -25,10 +25,12 @@ form{
     flex-direction: column;
     justify-content: center;
     font-size: 14px;
-    height: 100%;
+    height: auto;
+    padding: 10px;
     box-sizing: border-box;
     border-radius: 5px;
     margin-top: 10px;
+    margin-left: 250px;
 }
 
 .btn{
@@ -47,6 +49,7 @@ form button{
     width: 100px;
     font-weight: bold;
     cursor: pointer;
+    transform: translate(0, 10%);
 }
 
 form button:hover{
@@ -139,18 +142,21 @@ img{
     
 }
 
-.cad{
+.msg{
     display: flex;
     margin-top:15px ;
+    align-items: center;
+    justify-content: center;
+    
 }
 
 p{
     display: flex;
     justify-content: center;
     background-color: #4ca496;
-    border: #6adfcc;
-    border-radius: 10px;
-    transform: translate(190%, 0);
-    width: 25%;
+    border: solid 1px #6adfcc;
+    border-radius: 15px;
+    padding: 4px;
+    width: 100%;
 }
 

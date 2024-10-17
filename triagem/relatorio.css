@@ -1,16 +1,55 @@
+/* Estilo para o conteúdo principal */
 #main-content {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente se necessário */
-    min-height: 100vh; /* Garante que o conteúdo fique centralizado na altura da tela */
+    align-items: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
+    background-color: #f0f4f8; /* Fundo suave */
+    padding: 0; /* Remove qualquer padding que atrapalhe a centralização */
+    margin: 0; /* Remove margens */
+    flex-grow: 1; /* Garante que o conteúdo ocupe todo o espaço possível */
 }
 
+/* Estilo para a seção de relatórios */
 .relatorio {
-    text-align: center; /* Centraliza o texto dentro da div */
-    border: 1px solid #ccc; /* Opcional: adicione uma borda para destaque */
-    padding: 20px; /* Espaço interno */
-    border-radius: 5px; /* Cantos arredondados (opcional) */
-    background-color: #f9f9f9; /* Cor de fundo (opcional) */
-    width: 80%; /* Ajuste a largura conforme necessário */
-    max-width: 600px; /* Limita a largura máxima */
+    text-align: left;
+    border: 1px solid #ccc;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 600px; /* Mantém a largura máxima */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Centraliza horizontalmente */
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Garante que o conteúdo seja centralizado verticalmente */
+    align-items: center; /* Centraliza o conteúdo interno horizontalmente */
+}
+
+/* Separação visual de itens com borda */
+.relatorio .item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 0;
+}
+
+.relatorio .item:last-child {
+    border-bottom: none;
+}
+
+.relatorio p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #555;
+}
+
+/* Responsividade para dispositivos menores */
+@media (max-width: 768px) {
+    .relatorio {
+        width: 90%;
+        padding: 20px;
+    }
 }

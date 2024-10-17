@@ -103,11 +103,9 @@ if (isset($_GET['idPaciente'])) {
         <div class="btn">
             <button type="submit">Salvar Triagem</button>
         </div>
-    </form>
-</main>
-</div>
 
-<?php 
+        <div class="msg">
+        <?php 
     if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
         // Inclui o arquivo de conexão com o banco de dados
@@ -144,5 +142,11 @@ if (isset($_GET['idPaciente'])) {
         $conn->close();
     }
     ?>
+        </div>
+    </form>
+</main>
+</div>
+
+
 </body>
 </html>
