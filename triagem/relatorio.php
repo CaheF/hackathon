@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saúde</title>
+    <link rel="icon" href="image/aaa.png">
     <link rel="stylesheet" href="atendimento.css">
     <link rel="stylesheet" href="relatorio.css">
 </head>
@@ -43,6 +44,8 @@ if ($result) {
     // Pega o resultado da consulta
     $row = $result->fetch_assoc();
 
+    echo "<br>" . "<h2>Relátorio Geral</h2>";
+
     // Exibe a idade mais comum e a quantidade de registros
     if ($row['idade'] !== null) {
         echo "A idade mais comum é: " . $row['idade'] . " anos, com " . $row['total'] . " registros.";
@@ -63,6 +66,7 @@ if ($result) {
         if ($result->num_rows > 0) {
    
         $row = $result->fetch_assoc();
+
     
         echo "<br>" . "O gênero mais cadastrado é: " . $row['genero'] . " com " . $row['quantidade'] . " cadastros.";
         }else {
