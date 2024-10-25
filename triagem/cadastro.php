@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,23 +46,23 @@
             <h2>Cadastro de Evento</h2>  
 
             <div class="input">
+                <label>Nome do Evento</label><br>
+                <input type="text" id="nome" name="nome" placeholder="Insira o nome do evento" required>
+            </div>
+
+            <div class="input">
                 <label>Data realizada</label><br>
-                <input type="date" id="dataNasc" name="dataNasc" placeholder="Insira data de nascimento" required>
+                <input type="date" id="dataEvent" name="dataEvent" placeholder="Insira a data do evento" required>
             </div>
 
             <div class="input">
                 <label>Local do Evento</label>
-                <input type="text" id="nome" name="nome" placeholder="Insira a ação que será realizada" required>
-            </div>
-
-            <div class="input">
-                <label>Nome do Evento</label>
-                <input type="text" id="documento" name="documento" placeholder="Insira a ação que será realizada" required>
+                <input type="text" id="local" name="local" placeholder="Insira o local do evento" required>
             </div>
 
             <div class="input">
                 <label>Descrição do Evento</label>
-                <textarea id="obs" name="obs" placeholder="Insira as observações do paciente"></textarea>
+                <textarea id="obs" name="obs" placeholder="Insira as observações"></textarea>
             </div>
             
             <div class="btn"><button type="submit" id="btnCad" name="btnCad">Cadastrar Ação</button></div>
@@ -71,31 +71,31 @@
             if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
                 // Inclui o arquivo de conexão com o banco de dados
-                require('back/conectar.php');
+                require('conectar.php');
             
-                $dataNasc = $_POST['dataNasc'];
-                $documento = $_POST['documento'];
-                $obs = $_POST['obs'];
                 $nome = $_POST['nome'];
+                $dataEvent = $_POST['dataEvent'];
+                $local = $_POST['local'];
+                $obs = $_POST['obs'];
 
                 // Validação dos campos obrigatórios
-                if (empty($dataNasc)  || empty($documento) || empty($obs) || empty($nome)) {
+                if (empty($nome) || empty($dataEvent) || empty($local) || empty($obs)) {
                     echo "<div class='error'>Todos os campos são obrigatórios.</div>";
-                }  else {
-                        // Inserir novo paciente
-                        $sql = "INSERT INTO cadastro (dataNasc, documento, obs, nome) VALUES (?, ?, ?, ?)";
-                        $stmt = $conn->prepare($sql);
-                        $stmt->bind_param("ssss",$dataNasc, $documento, $obs, $nome);
-                        $stmt->execute();
-                        
-                        // Verifica se o cadastro foi realizado com sucesso
-                        if ($stmt->affected_rows > 0) {
-                            echo "<div class='msg'>Cadastro realizado com sucesso!</div>";
-                        } else {
-                            echo "<div class='error'>Erro ao realizar o cadastro.</div>";
-                        }
-                        $stmt->close();
+                } else {
+                    // Inserir novo evento
+                    $sql = "INSERT INTO evento (nome, dataEvent, localEvent, obs) VALUES (?, ?, ?, ?)";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("ssss", $nome, $dataEvent, $local, $obs);
+                    $stmt->execute();
+                    
+                    // Verifica se o cadastro foi realizado com sucesso
+                    if ($stmt->affected_rows > 0) {
+                        echo "<div class='msg'>Cadastro realizado com sucesso!</div>";
+                    } else {
+                        echo "<div class='error'>Erro ao realizar o cadastro.</div>";
                     }
+                    $stmt->close();
+                }
 
                 // Fechar a conexão com o banco de dados
                 $conn->close();
@@ -103,5 +103,6 @@
             ?>
     </form>
     </main>
+</div>
 </body>
 </html>
