@@ -9,7 +9,6 @@ body {
 #main-content {
     display: flex;
     justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Alinha verticalmente */
     min-height: 100vh; /* Garante que ocupe toda a altura da tela */
     padding: 20px; /* Adiciona padding ao redor do conteúdo */
     flex-grow: 1;
@@ -17,7 +16,6 @@ body {
 
 /* Estilo para a seção de relatórios */
 .relatorio {
-    text-align: center; /* Centraliza o texto */
     border: 1px solid #ccc; /* Borda leve */
     padding: 30px;
     border-radius: 10px; /* Arredondamento dos cantos */
@@ -33,6 +31,7 @@ body {
 
 /* Títulos */
 h2 {
+    text-align: center;
     color: #4ca496; /* Cor verde suave */
     margin-bottom: 20px; /* Espaço abaixo do título */
     font-size: 24px; /* Tamanho do título */
@@ -73,4 +72,19 @@ h2 {
     h2 {
         font-size: 20px; /* Tamanho do título reduzido */
     }
+}
+
+.campo{
+    background-color: #f2f2f2;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    height: 120px;
+    
+}
+
+.conteudo{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }

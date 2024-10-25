@@ -18,14 +18,39 @@
             </ul>
         </nav>
 
-        <section id="main-content">
+    <section id="main-content">
 
     <div class='relatorio'>
 
-
     <h2>Dashboard</h2>
 
-        </section>
+    <div class="conteudo">
+
+        <div class="campo">
+            <h4>PESSOAS ATENDIDAS</h4>
+        </div>
+
+        <div class="campo">
+            <h4>IDADE</h4>
+        </div>
+
+        <div class="campo">
+            <h4>COR</h4>
+        </div>
+
+        <div class="campo">
+            <h4>MÉDIA IMC</h4>
+        </div>
+
+        <div class="campo">
+            <h4>TIPO SANGUE</h4>
+        </div>
+
+        <div class="campo">
+            <h4>MÉDIA PRESSÃO</h4>
+        </div>
+    </div>
+    </section>
     </div>
 </body>
 </html>
