@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saúde</title>
     <link rel="icon" href="image/aaa.png">
-    <link rel="stylesheet" href="atendimento.css">
+    <link rel="stylesheet" href="menuRel.css">
     <link rel="stylesheet" href="relatorio.css">
 </head>
 <body>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="campo">
-            <h4>COR</h4>
+            <h4>ETNIA</h4>
         </div>
 
         <div class="campo">
