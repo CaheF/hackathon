@@ -6,43 +6,19 @@
     <title>Triagem</title>
     <link rel="icon" href="image/aaa.png">
     <link rel="stylesheet" href="cadastro.css">
-    <link rel="stylesheet" href="atendimento.css">
-    <style>
-        .msg {
-            background-color: #d4edda;
-            border: 1px solid #c3e6cb;
-            color: #155724;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-        }
-        .error {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="menu.css">
 </head>
 <body>
 <div id="container">
-        <nav id="menu">
-            <ul>
-                <a href="./relatorio.php"><img src="image/aaa.png" alt="Logo do site"></a>
-                <li><a href="cadastro.php" class="active">Evento</a></li>
-            </ul>
-        </nav>
+    <nav id="menu">
+        <ul>
+            <a href="./relatorio.php"><img src="image/aaa.png" alt="Logo do site"></a>
+            <li><a href="cadastro.php" class="active">Evento</a></li>
+        </ul>
+    </nav>
 
     <main class="principal">
-    <form method="POST">
+        <form method="POST" class="cadastro-form">
             <h2>Cadastro de Evento</h2>  
 
             <div class="input">
@@ -68,27 +44,22 @@
             <div class="btn"><button type="submit" id="btnCad" name="btnCad">Cadastrar Ação</button></div>
 
             <?php 
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            require('conectar.php');  // Inclui a conexão com o banco de dados
 
-                // Inclui o arquivo de conexão com o banco de dados
-                require('conectar.php');
-            
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $nome = $_POST['nome'];
                 $dataEvent = $_POST['dataEvent'];
                 $local = $_POST['local'];
                 $obs = $_POST['obs'];
 
-                // Validação dos campos obrigatórios
                 if (empty($nome) || empty($dataEvent) || empty($local) || empty($obs)) {
                     echo "<div class='error'>Todos os campos são obrigatórios.</div>";
                 } else {
-                    // Inserir novo evento
                     $sql = "INSERT INTO evento (nome, dataEvent, localEvent, obs) VALUES (?, ?, ?, ?)";
                     $stmt = $conn->prepare($sql);
                     $stmt->bind_param("ssss", $nome, $dataEvent, $local, $obs);
                     $stmt->execute();
                     
-                    // Verifica se o cadastro foi realizado com sucesso
                     if ($stmt->affected_rows > 0) {
                         echo "<div class='msg'>Cadastro realizado com sucesso!</div>";
                     } else {
@@ -96,12 +67,41 @@
                     }
                     $stmt->close();
                 }
-
-                // Fechar a conexão com o banco de dados
-                $conn->close();
             }
             ?>
-    </form>
+
+</form>
+
+            <?php 
+            // Consulta para exibir eventos cadastrados
+            $sql = "SELECT idEvento, nome, dataEvent, localEvent, obs FROM evento";
+            $resultado = $conn->query($sql);
+
+            if ($resultado->num_rows > 0) {
+                echo "<ul class='patient-list'>";
+                while ($row = $resultado->fetch_assoc()) {
+                    echo "<li>";
+                    echo "<div>";
+                    echo "Nome do Evento: " . $row["nome"] . "<br>";
+                    echo "Data Realizada: " . $row["dataEvent"] . "<br>";
+                    echo "Local: " . $row["localEvent"] . "<br>";
+                    echo "Observação: " . $row["obs"] . "<br>";
+                    echo "</div>";
+
+                    // Botão de triagem
+                    echo "<form action='relTriagem.php' method='GET'>";
+                    echo "<input type='hidden' name='idEvento' value='" . $row["idEvento"] . "'>";
+                    echo "<button type='submit' class='triage-btn'>Realizar Evento</button>";
+                    echo "</form>";
+                    echo "</li>";
+                }
+                echo "</ul>";
+            } else {
+                echo "Nenhum evento encontrado.";
+            }
+
+            $conn->close();
+            ?>
     </main>
 </div>
 </body>
