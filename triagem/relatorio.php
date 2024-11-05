@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Saúde</title>
     <link rel="icon" href="image/aaa.png">
-    <link rel="stylesheet" href="atendimento.css">
+    <link rel="stylesheet" href="menuRel.css">
     <link rel="stylesheet" href="relatorio.css">
 </head>
 <body>
@@ -18,14 +18,39 @@
             </ul>
         </nav>
 
-        <section id="main-content">
+    <section id="main-content">
 
     <div class='relatorio'>
 
-
     <h2>Dashboard</h2>
 
-        </section>
+    <div class="conteudo">
+
+        <div class="campo">
+            <h4>PESSOAS ATENDIDAS</h4>
+        </div>
+
+        <div class="campo">
+            <h4>IDADE</h4>
+        </div>
+
+        <div class="campo">
+            <h4>ETNIA</h4>
+        </div>
+
+        <div class="campo">
+            <h4>MÉDIA IMC</h4>
+        </div>
+
+        <div class="campo">
+            <h4>TIPO SANGUE</h4>
+        </div>
+
+        <div class="campo">
+            <h4>MÉDIA PRESSÃO</h4>
+        </div>
+    </div>
+    </section>
     </div>
 </body>
 </html>
