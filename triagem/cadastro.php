@@ -89,7 +89,7 @@
                     echo "</div>";
 
                     // Botão de triagem
-                    echo "<form action='relTriagem.php' method='GET'>";
+                    echo "<form action='relTriagem.php' method='POST'>";
                     echo "<input type='hidden' name='idEvento' value='" . $row["idEvento"] . "'>";
                     echo "<button type='submit' class='triage-btn'>Realizar Evento</button>";
                     echo "</form>";
