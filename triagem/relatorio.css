@@ -88,3 +88,29 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
+
+.resultTotal {
+    position: absolute;
+    top: 215px;  /* Ajuste a posição para o centro da tela ou qualquer valor */
+    left: 630px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: none;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    width: 100px;
+}
+
+.resultMedia {
+    position: absolute;
+    top: 215px;  /* Ajuste a posição para o centro da tela ou qualquer valor */
+    left: 630px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: none;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 18px;
+    width: 200px;
+}

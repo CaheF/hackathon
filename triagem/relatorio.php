@@ -52,5 +52,33 @@
     </div>
     </section>
     </div>
+
+    <?php 
+        require('conectar.php');
+
+        $sql = "SELECT COUNT(idAtendimento) AS total from atendimento";
+        $resultado = $conn->query($sql);
+
+        if($resultado->num_rows > 0){
+            $row = $resultado->fetch_assoc();
+            echo "<div class='resultTotal'>" . $row['total'] . "</div>"; 
+        } else {
+            echo "Nenhum dado encontrado";
+        }
+
+        $sql = "SELECT AVG(idade) AS media from atendimento";
+        $resultado = $conn->query($sql);
+
+        if ($resultado) {  // Verifica se a consulta foi bem-sucedida
+            if ($resultado->num_rows > 0) {
+                $row = $resultado->fetch_assoc();
+                echo "<div class='resultIdade'>" . $row['media'] . "</div>";
+            } else {
+        echo "Nenhum dado encontrado";
+            }
+        } else {
+        echo "Erro na consulta de média: " . $conn->error;
+        }
+    ?> 
 </body>
 </html>

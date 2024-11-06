@@ -14,7 +14,7 @@
 .cadastro-form {
     display: flex;
     flex-direction: column;
-    margin-top: 550px;
+    margin-top: 650px;
     padding: 20px;
     background-color: white;
     justify-content: center;
@@ -120,4 +120,9 @@
     text-decoration: none;
     transition: background 0.3s ease;
     cursor: pointer;
+}
+
+.triage-btn:hover{
+    background-color: #0cf000;
+    transition: 0.2s;
 }
