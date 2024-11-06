@@ -69,9 +69,9 @@
                 }
             }
             ?>
+        </form>
 
-</form>
-
+            <h2> Lista de Eventos</h2>
             <?php 
             // Consulta para exibir eventos cadastrados
             $sql = "SELECT idEvento, nome, dataEvent, localEvent, obs FROM evento";

@@ -11,22 +11,20 @@
     margin-left: 250px; /* Espaço reservado para o menu lateral */
 }
 
-/* Estilo do formulário de cadastro */
 .cadastro-form {
     display: flex;
     flex-direction: column;
-    margin-top: 15px;
+    margin-top: 550px;
     padding: 20px;
     background-color: white;
     justify-content: center;
+    align-items: left; /* Centralizando os itens dentro do formulário */
     border-radius: 5px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     width: 520px;
     max-width: 100%;
     font-size: 14px;
-    height: 400px;
     box-sizing: border-box;
-    align-items: center;
 }
 
 .cadastro-form h2 {
@@ -53,17 +51,22 @@
     margin-bottom: 10px;
 }
 
+.cadastro-form textarea {
+    height: 80px; /* Aumentando a altura da área de descrição */
+}
+
 .cadastro-form button {
-    display: block;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo do botão */
     background-color: #6adfcc;
     border: none;
     border-radius: 5px;
     height: 30px;
-    width: 100px;
+    width: 100%;  /* Garantir que o botão ocupe toda a largura do formulário */
     font-weight: bold;
-    transform: translate(0, 10%);
     cursor: pointer;
     margin-top: 10px;
+    align-items: center;
 }
 
 .cadastro-form button:hover {
@@ -71,7 +74,6 @@
     color: black;
     transition: 0.2s;
 }
-
 /* Estilo da lista de pacientes */
 .principal {
     display: flex;
