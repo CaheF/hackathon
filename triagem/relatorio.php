@@ -47,7 +47,7 @@
                     $sql = "SELECT AVG(idade) AS media FROM atendimento";
                     $resultado = $conn->query($sql);
 
-                    if ($resultado && $resultado->num_rows > 0) {
+                    if ($resultado->num_rows > 0) {
                         $row = $resultado->fetch_assoc();
                         echo "<div class='resultIdade'>" . round($row['media'], 2) . "</div>";
                     } else {
