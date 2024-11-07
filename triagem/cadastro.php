@@ -36,45 +36,48 @@
                 <input type="text" id="local" name="local" placeholder="Insira o local do evento" required>
             </div>
 
-            <div class="input">
-                <label>Descrição do Evento</label>
-                <textarea id="obs" name="obs" placeholder="Insira as observações"></textarea>
-            </div>
-            
             <div class="btn"><button type="submit" id="btnCad" name="btnCad">Cadastrar Ação</button></div>
 
             <?php 
-            require('conectar.php');  // Inclui a conexão com o banco de dados
+require('conectar.php');  // Inclui a conexão com o banco de dados
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $nome = $_POST['nome'];
-                $dataEvent = $_POST['dataEvent'];
-                $local = $_POST['local'];
-                $obs = $_POST['obs'];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST['nome'];
+    $dataEvent = $_POST['dataEvent'];
+    $local = $_POST['local'];
 
-                if (empty($nome) || empty($dataEvent) || empty($local) || empty($obs)) {
-                    echo "<div class='error'>Todos os campos são obrigatórios.</div>";
-                } else {
-                    $sql = "INSERT INTO evento (nome, dataEvent, localEvent, obs) VALUES (?, ?, ?, ?)";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("ssss", $nome, $dataEvent, $local, $obs);
-                    $stmt->execute();
-                    
-                    if ($stmt->affected_rows > 0) {
-                        echo "<div class='msg'>Cadastro realizado com sucesso!</div>";
-                    } else {
-                        echo "<div class='error'>Erro ao realizar o cadastro.</div>";
-                    }
-                    $stmt->close();
-                }
-            }
-            ?>
+    if (empty($nome) || empty($dataEvent) || empty($local)) {
+        echo "<div class='error'>Todos os campos são obrigatórios.</div>";
+    } else {
+        // Corrigido a consulta SQL
+        $sql = "INSERT INTO evento (nome, dataEvent, localEvent) VALUES (?, ?, ?)";
+        
+        // Preparando a consulta
+        $stmt = $conn->prepare($sql);
+
+        // Vinculando os parâmetros (removido o $obs)
+        $stmt->bind_param("sss", $nome, $dataEvent, $local);
+
+        // Executando a consulta
+        $stmt->execute();
+        
+        if ($stmt->affected_rows > 0) {
+            echo "<div class='msg'>Cadastro realizado com sucesso!</div>";
+        } else {
+            echo "<div class='error'>Erro ao realizar o cadastro.</div>";
+        }
+
+        // Fechar a declaração
+        $stmt->close();
+    }
+}
+?>
         </form>
 
             <h2> Lista de Eventos</h2>
             <?php 
             // Consulta para exibir eventos cadastrados
-            $sql = "SELECT idEvento, nome, dataEvent, localEvent, obs FROM evento WHERE realizado IS NULL";
+            $sql = "SELECT idEvento, nome, dataEvent, localEvent FROM evento";
             $resultado = $conn->query($sql);
 
             if ($resultado->num_rows > 0) {
@@ -85,7 +88,6 @@
                     echo "Nome do Evento: " . $row["nome"] . "<br>";
                     echo "Data Realizada: " . $row["dataEvent"] . "<br>";
                     echo "Local: " . $row["localEvent"] . "<br>";
-                    echo "Observação: " . $row["obs"] . "<br>";
                     echo "</div>";
 
                     // Botão de triagem
