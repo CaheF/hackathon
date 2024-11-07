@@ -74,7 +74,7 @@
             <h2> Lista de Eventos</h2>
             <?php 
             // Consulta para exibir eventos cadastrados
-            $sql = "SELECT idEvento, nome, dataEvent, localEvent, obs FROM evento";
+            $sql = "SELECT idEvento, nome, dataEvent, localEvent, obs FROM evento WHERE realizado IS NULL";
             $resultado = $conn->query($sql);
 
             if ($resultado->num_rows > 0) {

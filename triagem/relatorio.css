@@ -1,116 +1,162 @@
-/* Estilo para o corpo da página */
+/* Definições globais */
 body {
-    font-family: Arial, sans-serif; /* Fonte agradável */
-    background-color: #f0f4f8; /* Fundo suave */
-    margin: 0; /* Remove margens do corpo */
+    font-family: Arial, sans-serif; /* Definir fonte para o corpo */
+    background-color: #f4f7fa; /* Fundo claro para o corpo */
+    margin: 0;
+    padding: 0;
 }
 
-/* Estilo para o conteúdo principal */
-#main-content {
+/* Container principal (inclui o menu e o conteúdo) */
+#container {
     display: flex;
-    justify-content: center; /* Centraliza horizontalmente */
-    min-height: 100vh; /* Garante que ocupe toda a altura da tela */
-    padding: 20px; /* Adiciona padding ao redor do conteúdo */
-    flex-grow: 1;
+    min-height: 100vh; /* Garante que o conteúdo ocupe a altura total */
 }
 
-/* Estilo para a seção de relatórios */
-.relatorio {
-    border: 1px solid #ccc; /* Borda leve */
-    padding: 30px;
-    border-radius: 10px; /* Arredondamento dos cantos */
-    background-color: #ffffff; /* Fundo branco */
-    width: 100%;
-    max-width: 600px; /* Mantém a largura máxima */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin: 20px; /* Espaçamento ao redor da seção */
-    font-size: 18px; /* Tamanho da fonte */
-    line-height: 1.6; /* Espaçamento entre linhas */
-    color: #333; /* Cor do texto */
+/* Estilo do menu lateral */
+#menu {
+    width: 250px;
+    background-color: #4ca496;
+    height: 100%;
+    padding-top: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    border-right: 2px solid #0cf000;
+    position: fixed; /* Fixa o menu na tela */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 15px;
 }
 
-/* Títulos */
-h2 {
-    text-align: center;
-    color: #4ca496; /* Cor verde suave */
-    margin-bottom: 20px; /* Espaço abaixo do título */
-    font-size: 24px; /* Tamanho do título */
-    border-bottom: 2px solid #4ca496; /* Linha abaixo do título */
-    padding-bottom: 10px; /* Espaço abaixo do texto do título */
+#menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-/* Estilo para os dados */
-.relatorio .dados {
-    background-color: #e7f9f1; /* Fundo suave para os dados */
-    border-radius: 8px; /* Arredondamento dos cantos */
-    padding: 15px; /* Espaçamento interno */
-    margin: 10px 0; /* Espaçamento vertical entre os dados */
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Sombra leve */
-    font-weight: bold; /* Negrito para os dados */
+#menu ul li {
+    margin-bottom: 10px;
 }
 
-/* Estilo para as mensagens de erro e sucesso */
-.relatorio .success {
-    color: #4caf50; /* Verde para sucesso */
-    font-weight: bold; /* Negrito */
-    margin: 10px 0; /* Margem para separação */
-}
-
-.relatorio .error {
-    color: #f44336; /* Vermelho para erro */
-    font-weight: bold; /* Negrito */
-    margin: 10px 0; /* Margem para separação */
-}
-
-/* Responsividade para dispositivos menores */
-@media (max-width: 768px) {
-    .relatorio {
-        width: 90%; /* Largura reduzida em dispositivos pequenos */
-        padding: 20px; /* Padding reduzido */
-    }
-
-    h2 {
-        font-size: 20px; /* Tamanho do título reduzido */
-    }
-}
-
-.campo{
-    background-color: #f2f2f2;
-    padding: 5px;
-    text-align: center;
+#menu ul li a {
+    display: block;
+    padding: 12px 20px;
+    background: #51f7db;
+    color: #ffffff;
+    font-weight: bold;
+    text-decoration: none;
     border-radius: 5px;
-    height: 120px;
-    
+    transition: background 0.5s ease;
 }
 
-.conteudo{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+#menu ul li a:hover {
+    background-color: #0cf000;
+    color: #1D1E33;
 }
 
-.resultTotal {
-    position: absolute;
-    top: 215px;  /* Ajuste a posição para o centro da tela ou qualquer valor */
-    left: 630px;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: none;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 18px;
+a {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 13px;
+}
+
+img {
+    display: flex;
     width: 100px;
+    height: 100px;
 }
 
-.resultMedia {
-    position: absolute;
-    top: 215px;  /* Ajuste a posição para o centro da tela ou qualquer valor */
-    left: 630px;
-    transform: translate(-50%, -50%);
+#menu ul li a.active {
+    background-color: #0cf000;
+    color: black;
+}
+
+/* Estilo do conteúdo principal ao lado do menu */
+#main-content {
+    margin-left: 250px; /* Deixa espaço para o menu lateral */
     padding: 20px;
-    background-color: none;
+    flex: 1; /* Ocupa o restante da tela */
+    background-color: #f4f7fa;
+}
+
+/* Estilo do título da página */
+h2 {
+    font-size: 2.5rem;
+    color: #4ca496;
+    margin-bottom: 30px;
+    margin-left: 405px;
+}
+
+/* Estilo para os cards de resultados */
+.conteudo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Define 3 colunas */
+    gap: 20px; /* Espaço entre os cards */
+    margin-left: 33px;
+}
+
+/* Estilo de cada card */
+.campo {
+    background-color: #ffffff;
+    padding: 20px;
     border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    font-size: 18px;
-    width: 200px;
+    flex: 1;
+}
+
+/* Títulos dentro dos cards */
+.campo h4 {
+    color: #4ca496; /* Cor do título */
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid #4ca496;
+    padding-bottom: 10px;
+}
+
+/* Estilo dos resultados dentro dos cards */
+.resultTotal, .resultIdade, .resultCor, .resultImc, .resultPressao, .resultSangue {
+    font-size: 25px;
+    color: #1D1E33;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Estilo para os campos de contagem por Etnia */
+.resultCor {
+    font-size: 25px;
+    color: #1D1E33;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 1200px) {
+    .conteudo {
+        grid-template-columns: repeat(2, 1fr); /* Para telas menores que 1200px, 2 colunas */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Para telas menores, o menu fica em cima e o conteúdo se ajusta */
+    #menu {
+        width: 200px;
+        position: relative;
+        height: auto;
+    }
+
+    #main-content {
+        margin-left: 0;
+    }
+
+    .conteudo {
+        grid-template-columns: 1fr; /* Para telas pequenas, 1 coluna */
+    }
+
+    .campo {
+        width: 100%; /* Ocupa toda a largura */
+        max-width: 400px; /* Limita o tamanho máximo */
+    }
 }
